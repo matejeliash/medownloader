@@ -1,0 +1,225 @@
+<!doctype html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Downloader</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <link rel="preconnect" href="https://fonts.bunny.net" />
+    <link
+        href="https://fonts.bunny.net/css?family=abeezee:400"
+        rel="stylesheet"
+    />
+
+    <style>
+        body {
+
+            margin: 0;
+            font-family: "ABeeZee", sans-serif;
+            color: #e8ebff;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+
+
+
+        }
+
+        body::before {
+          content: "";
+          position: fixed;
+          inset: 0;
+          background-image: url("img.jpg");
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          filter: blur(12px);
+          transform: scale(1.05); /* prevents edge clipping */
+          z-index: -1;
+        }
+
+
+
+        h1 {
+            font-weight: bolder;
+            text-decoration: underline;
+
+            margin: 0px;
+        }
+
+        #mainTitle {
+            //padding: 5px;
+            //backdrop-filter: blur(10px);
+            width: 100%;
+            text-align: center;
+            background-color: #111;
+            margin: 0px;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+        #status {
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        #container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* vertical */
+            align-items: center; /* horizontal */
+            //background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        table,
+        th,
+        td {
+            //border: 1px solid black;
+            //border: 1px solid #4b8063;
+            border: 1px solid #008888;
+        }
+        table {
+            border-collapse: collapse;
+            text-align: center;
+            color: #fff;
+            max-width: 100%;
+        }
+        table tbody tr td {
+            background-color: #222;
+        }
+
+        table thead tr td {
+            padding: 5px;
+        }
+        table thead tr td {
+            background-color: #111;
+        }
+
+        button {
+            padding: 5px;
+            margin: 5px;
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #008888;
+            border-radius: 4px;
+            font-family: "ABeeZee", sans-serif;
+        }
+
+
+        .buttonBlue {
+            padding: 5px;
+            margin: 5px;
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #2e6ac9;
+            border-radius: 4px;
+            font-family: "ABeeZee", sans-serif;
+        }
+
+        .buttonRed {
+            padding: 5px;
+            margin: 5px;
+            background-color: #333;
+            color: #fff;
+            border: 2px solid #7a2b0d;
+            border-radius: 4px;
+            font-family: "ABeeZee", sans-serif;
+        }
+
+
+        button:hover{
+            color: #333;
+            background-color: #aaa;
+
+        }
+
+        #dirPath,
+        #freeSpace {
+            font-style: italic; /* makes text italic */
+        }
+
+        input {
+            padding: 5px;
+            margin: 5px;
+            background-color: #333;
+            color: #fff;
+
+            //border: 2px solid #4b8063;
+            border: 2px solid #008888;
+            border-radius: 4px;
+            font-family: "ABeeZee", sans-serif;
+
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="mainTitle">
+            <h1>Medownloader</h1>
+        </div>
+
+
+        <div id="loginArea">
+            <h2>Login</h2>
+            <form>
+                <input
+                    type="password"
+                    id="password"
+                    placeholder="enter password"
+                />
+                <button type="button" onclick="login()">Login</button>
+            </form>
+            <p id="info"></p>
+        </div>
+
+        <div id="appArea">
+            <h2>Active downloads</h2>
+            <button class="buttonRed" onclick="logout()">Logout</button>
+
+            <p id="freeSpace">
+                <u> <strong>Free space</strong>:</u>
+            </p>
+            <p id="dirPath">
+                    <u> <strong>Directory</strong>:</u>
+                </span>
+                <span id="dirPathData"></span>
+            </p>
+            <form>
+                <label>Url:</label><br />
+                <input type="text" id="url" required /><br />
+
+                <label>Directory:</label><br />
+                <input type="text" id="dir" /><br />
+
+                <label>Filename:</label><br />
+                <input type="text" id="filename" /><br />
+
+                <button class="buttonBlue" type="button" onclick="startDownload()">
+                    Download
+                </button>
+            </form>
+
+            <p id="downloadInfo"></p>
+
+            <table id="downloadsTable">
+                <thead>
+                    <tr>
+                        <td>Id</td>
+                        <td>Status</td>
+                        <td>filename</td>
+                        <td>Downloaded</td>
+                        <td>Size</td>
+                        <td>Speed</td>
+                        <td>Toggle</td>
+                        <td>Delete</td>
+                    </tr>
+                </thead>
+
+                <tbody id="table-body"></tbody>
+            </table>
+        </div>
+
+    </div>
+    <script src="script.js"></script>
+</body>
+<loginml> </loginml>
