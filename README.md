@@ -4,7 +4,7 @@ Medownloader is a simple downloader app and server written in Go. The app allows
 
 The app has the following features:  
 - Login with a master password  
-- Per-device sessions using cookie tokens  
+- Per-device sessions using cookie tokens and session middleware on server
 - Display of free space and current directory  
 - Ability to specify the name of downloaded files  
 - Deletion and stopping of currently running downloads  
